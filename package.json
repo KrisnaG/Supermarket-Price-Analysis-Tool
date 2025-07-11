@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "electron": "npm run build && electron electron.main.js",
+    "electron:dev": "electron electron.main.js"
   },
   "prettier": {
     "overrides": [
@@ -35,7 +37,11 @@
     "@angular/build": "^20.0.5",
     "@angular/cli": "^20.0.5",
     "@angular/compiler-cli": "^20.0.0",
+    "@capacitor/android": "^7.4.1",
+    "@capacitor/cli": "^7.4.1",
     "@types/jasmine": "~5.1.0",
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -43,5 +49,21 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.2"
+  }
+  ,
+  "main": "electron.main.js",
+  "build": {
+    "appId": "com.supermarket.price.analysis.tool",
+    "productName": "Supermarket Price Analysis Tool",
+    "files": [
+      "dist/",
+      "electron.main.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": ["nsis"]
+    }
   }
 }
