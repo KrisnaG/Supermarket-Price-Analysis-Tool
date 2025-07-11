@@ -1,0 +1,61 @@
+.home-content {
+    --background: var(--ion-background-color, #f8f8f8);
+    min-height: 100vh;
+}
+
+.home-welcome {
+    text-align: center;
+    margin: 2rem 0 1.5rem 0;
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 1rem 2rem 1rem;
+}
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    min-width: 180px;
+    max-width: 100%;
+    min-height: 120px;
+    padding: 1.2rem 1rem 1rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+.home-card ion-icon {
+    color: var(--ion-color-primary, #3880ff);
+}
+
+.home-card ion-label {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.home-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.icon-label-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 auto;
+    gap: 0.3rem;
+}
+
+ion-content::part(scroll) {
+  padding-bottom: 4rem;
+}

@@ -1,24 +1,59 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>My App</ion-title>
+        <ion-title>Supermarket Price Analysis Tool</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">My App</ion-title>
-        </ion-toolbar>
-    </ion-header>
-    
-    <ion-list>
-        @for (item of items; track $index) {
-            <ion-item [button]="true" routerLink="/home/1">
-                <ion-icon slot="start" name="logo-ionic" size="large"></ion-icon>
-                <ion-label>Hello</ion-label>
-                <ion-note slot="end">6</ion-note>
-            </ion-item>
-        }
-    </ion-list>
-</ion-content>
+<ion-content class="home-content">
+    <div class="home-welcome">
+        <h2>Welcome!</h2>
+        <p>
+            Analyze, manage, and track supermarket product prices with ease.
+        </p>
+    </div>
 
+    <div class="home-actions">
+        <ion-card routerLink="/products" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="pricetag-outline" size="large"></ion-icon>
+                <ion-label>Product Table</ion-label>
+            </div>
+            <p>View and edit all products</p>
+        </ion-card>
+        <ion-card routerLink="/add-product" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="add-circle-outline" size="large"></ion-icon>
+                <ion-label>Add New Product</ion-label>
+            </div>
+            <p>Add a new product to your database</p>
+        </ion-card>
+        <ion-card routerLink="/add-entry" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="create-outline" size="large"></ion-icon>
+                <ion-label>Add New Price Entry</ion-label>
+            </div>
+            <p>Log a new price for a product</p>
+        </ion-card>
+        <ion-card routerLink="/price-history" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="trending-up-outline" size="large"></ion-icon>
+                <ion-label>Price History</ion-label>
+            </div>
+            <p>See trends and price changes</p>
+        </ion-card>
+        <ion-card routerLink="/update-products" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="refresh-outline" size="large"></ion-icon>
+                <ion-label>Update Products</ion-label>
+            </div>
+            <p>Bulk update product info</p>
+        </ion-card>
+        <ion-card routerLink="/download-csv" class="home-card" button>
+            <div class="icon-label-group">
+                <ion-icon name="download-outline" size="large"></ion-icon>
+                <ion-label>Download CSV</ion-label>
+            </div>
+            <p>Export your data</p>
+        </ion-card>
+    </div>
+</ion-content>
