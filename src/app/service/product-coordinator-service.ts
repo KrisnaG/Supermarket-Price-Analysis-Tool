@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { WoolworthsService } from './woolworths-service';
-// import { ColesService } from './coles-service'; // Uncomment if implemented
 import { ProductBaseService } from './product-base-service';
 
 @Injectable({
@@ -12,12 +11,14 @@ export class ProductCoordinatorService {
 
   constructor(
     private woolworthsService: WoolworthsService,
-    // private colesService: ColesService // Uncomment if implemented
   ) {
     this.services = {
       woolworths: this.woolworthsService,
-      // coles: this.colesService // Uncomment if implemented
     };
+  }
+
+  getStores(): string[] {
+    return Object.keys(this.services);
   }
 
   async updateAllProducts(productLists: { [store: string]: string[] }): Promise<Product[]> {

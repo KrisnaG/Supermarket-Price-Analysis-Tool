@@ -14,6 +14,7 @@ export class ProductRepository {
   }
 
   async initialiseDatabase(): Promise<void> {
+    await this.sqlite.initWebStore();
     this.db = await this.sqlite.createConnection('products.db', false, 'no-encryption', 1, false);
     await this.db.open();
     await this.db.execute(`

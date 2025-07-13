@@ -1,0 +1,8 @@
+{
+  "/shop": {
+    "target": "https://www.woolworths.com.au",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

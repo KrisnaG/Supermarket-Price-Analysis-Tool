@@ -11,7 +11,7 @@ export class WoolworthsService extends ProductBaseService {
   }
 
   protected get productUrl(): string {
-    return 'https://www.woolworths.com.au/shop/productdetails';
+    return '/shop/productdetails';
   }
 
   protected extractSearchResults(searchResult: string): Record<string, any> | null {

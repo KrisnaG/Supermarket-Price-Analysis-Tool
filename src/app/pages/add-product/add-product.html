@@ -1,0 +1,70 @@
+<ion-header class="header">
+    <ion-toolbar>
+        <ion-title>Add Product</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+    <div class="center-card-wrapper">
+        <form>
+            <ion-item>
+                <ion-label position="stacked">Store</ion-label>
+                <ion-select [(ngModel)]="store" name="store" required>
+                    @for(s of stores; track s) {
+                    <ion-select-option [value]="s">{{ s | titlecase }}</ion-select-option>
+                    }
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Stockcode</ion-label>
+                <ion-input [(ngModel)]="stockcode" name="stockcode" required type="number"></ion-input>
+            </ion-item>
+
+            <ion-button expand="block" type="submit" disabled={{!stockcode}} (click)="fetchProduct()">Fetch
+                Product</ion-button>
+        </form>
+
+        @if (fetchError()) {
+        <ion-text color="danger">
+            <p>{{ fetchError() }}</p>
+        </ion-text>
+        }
+
+        @if (fetchedProduct()) {
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>{{ fetchedProduct()?.product_name }}</ion-card-title>
+                <ion-card-subtitle>
+                    {{ fetchedProduct()?.store | titlecase }} - {{ fetchedProduct()?.stockcode }}
+                </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <p><strong>Price:</strong> ${{ fetchedProduct()?.price }}</p>
+                <p><strong>Special:</strong> {{ fetchedProduct()?.is_on_special ? 'Yes' : 'No' }}</p>
+                <p><strong>Half Price:</strong> {{ fetchedProduct()?.is_half_price ? 'Yes' : 'No' }}</p>
+                <p><strong>Was Price:</strong> ${{ fetchedProduct()?.was_price }}</p>
+                <p><strong>Savings:</strong> ${{ fetchedProduct()?.savings_amount }}</p>
+                <p><strong>Package Size:</strong> {{ fetchedProduct()?.package_size }}</p>
+                <p><strong>Unit Weight:</strong> {{ fetchedProduct()?.unit_weight_in_grams }}g</p>
+                <p><strong>Cup Price:</strong> ${{ fetchedProduct()?.cup_price }} / {{ fetchedProduct()?.cup_measure }}
+                </p>
+                <ion-button expand="block" color="success"
+                    [disabled]="(fetchedProduct()?.price ?? 0) <= 0 && !fetchedProduct()?.product_name"
+                    (click)="addProduct()">Add to Database</ion-button>
+            </ion-card-content>
+
+            @if (addSuccess) {
+            <ion-text color="success" class="message">
+                <p>Product added to database!</p>
+            </ion-text>
+            }
+            @if (addError) {
+            <ion-text color="danger" class="message">
+                <p>{{ addError }}</p>
+            </ion-text>
+            }
+        </ion-card>
+        }
+    </div>
+</ion-content>
